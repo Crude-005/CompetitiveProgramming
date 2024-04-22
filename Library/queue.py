@@ -1,11 +1,13 @@
+import stack
 class node():
     def __init__(self ,data):
         self.data = data
         self.next = None
 
-class Stack():
+class Queue():
     def __init__(self):
         self.head = None
+        self.last = None
 
     def Traverse(self):
         temp = self.head
@@ -14,46 +16,44 @@ class Stack():
             temp = temp.next
         print("")
     
-    def __revtraverse(temp):
-        if temp == None:
-            return
-        Stack.__revtraverse(temp.next)
-        print(temp.data,end = ' ')
-
-    def reverseTraversal(self):
-        temp = self.head
-        Stack.__revtraverse(temp)
-        print("")
-        
-    def Push(self ,data):
+    def Enqueue(self ,data):
         newNode = node(data)
-        newNode.next = self.head
-        self.head = newNode
+        if (not self.head):
+            self.last = newNode
+            self.head = newNode
+        else:
+            self.last.next = newNode
+            self.last = newNode
         return
 
-    def Pop(self):
+    def Dequeue(self):
         if(not self.head):
             return
         temp = self.head
         data = temp.data
         self.head = self.head.next
+        if (not self.head):
+            self.last = None
         del temp
         return data
 
 def main():
-    head = Stack()
+    q = Queue()
     l = [2,3,4,5,6,8]
     for i in l:
-        head.Push(i)
+        q.Enqueue(i)
 
-    head.Traverse()
-    head.reverseTraversal()
-    a = head.Pop()
+    q.Traverse()
+    a = q.Dequeue()
     print(a)
     while(a != None):
-        head.Traverse()
-        a = head.Pop()
+        q.Traverse()
+        a = q.Dequeue()
         print (a)
+        print('head -',q.head)
+        print('last -',q.last)
+    print("123456")
+    
     print("End")
 
 if __name__ == '__main__':
