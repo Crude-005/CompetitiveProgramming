@@ -141,8 +141,8 @@ class BinaryTree():
         if root == None:
             return
         BinaryTree.__postOrderTraversal(root.left)
-        print(str(root.data),end = ' ')
         BinaryTree.__postOrderTraversal(root.right)
+        print(str(root.data),end = ' ')
 
 
     def postOrderTraversal(self):
@@ -153,8 +153,8 @@ class BinaryTree():
     def __preOrderTraversal(root : node):
         if root == None:
             return
-        BinaryTree.__preOrderTraversal(root.left)
         print(str(root.data),end = ' ')
+        BinaryTree.__preOrderTraversal(root.left)
         BinaryTree.__preOrderTraversal(root.right)
 
 
